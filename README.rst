@@ -11,4 +11,13 @@ requested and is not in this set, `TemplateDoesNotExist` is raised immediately.
 Setup
 -----
 
-Put `'templatefinder.Loader'` into `TEMPLATE_LOADERS` in your `settings.py`.
+Put `'templatefinder.Loader'` into `TEMPLATE_LOADERS` in your `settings.py` as
+you would 'django.template.loaders.cached.Loader'. For example::
+
+    TEMPLATE_LOADERS = ( 
+        ('templatefinder.Loader', (
+            'django.template.loaders.filesystem.Loader',
+            'django.template.loaders.app_directories.Loader',
+        )), 
+    )   
+
