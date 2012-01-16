@@ -17,6 +17,7 @@ setup(
 
     packages = find_packages(
         where = '.',
+        exclude = ('tests', ),
     ),
 
     classifiers=[
@@ -32,5 +33,9 @@ setup(
     install_requires = [
         'Django>=1.3',
     ],
-    test_suite = 'unittest'
+    test_requires = [
+        'nose',
+        'coverage',
+    ],
+    test_suite = 'tests.run_tests.run_all'
 )

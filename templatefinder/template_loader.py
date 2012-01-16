@@ -12,7 +12,7 @@ def find_templates_in_dirs(dir_list):
             # strip base dir
             root = root[len(d) + 1:]
             for f in files:
-                out.add(path.join(root, files))
+                out.add(path.join(root, f))
 
     return out
 
@@ -38,7 +38,7 @@ class Loader(cached.Loader):
                 logging.error('Unknown template loader %s, unable to find all templates. Disabling.', l)
                 self.existing_templates = None
                 return
-            self.existing_templates += TEMPLATE_FINDERS[l]()
+            self.existing_templates = self.existing_templates.union(TEMPLATE_FINDERS[l]())
         logging.info('Found %d templates.', len(self.existing_templates))
 
     def load_template(self, template_name, template_dirs=None):
