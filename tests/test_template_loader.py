@@ -17,7 +17,7 @@ def test_existing_template_is_found():
     tools.assert_equals('I exist, therefore I am!\n', t.render(Context({})))
 
 def test_loader_found_all_templates():
-    tools.assert_equals(set(['existing.html', 'app_existing.html']), loader.existing_templates)
+    tools.assert_equals(set(['existing.html', 'app_existing.html', 'a/b/c/tpl.html']), loader.existing_templates)
 
 def test_undiscovered_template_will_cannot_be_found():
     tools.assert_raises(TemplateDoesNotExist, get_template, 'existing.html')
